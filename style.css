@@ -1,0 +1,429 @@
+/* 마우스 커서 모양 변경 */
+/* 1. 웹사이트 전체 마우스 모양 변경 */
+body {
+  margin: 0;
+  cursor: url("assets/images/cursor.png"), auto;
+}
+
+a,
+button,
+.card,
+.card img,
+.main-title-img {
+  cursor: url("assets/images/cursor.png"), pointer !important;
+}
+
+/* [특정 페이지 전용] 배경은 이 클래스가 감싸는 곳에만 적용합니다 */
+.portfolio-container {
+  background-color: #1a1a1a;
+  background-image: url("assets/images/bg_illus.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 800px;
+
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+/* 1. 폰트 등록 */
+@font-face {
+  font-family: "NanumSquare";
+  src: url("assets/fonts/NanumSquareEB.ttf") format("truetype");
+  font-weight: 800;
+}
+@font-face {
+  font-family: "NanumSquare";
+  src: url("assets/fonts/NanumSquareR.ttf") format("truetype");
+  font-weight: 400;
+}
+
+/* 2. 초기화 및 배경 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #1e1e1e;
+  color: #fff;
+  font-family: "NanumSquare", sans-serif;
+  /* overflow: hidden; */
+}
+.intro-visual {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* 3. 왼쪽 데코 선 */
+.side-deco {
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.line {
+  width: 3px;
+  display: block;
+}
+.orange-top {
+  background: #ff6b00;
+  height: 40px;
+}
+.white-middle {
+  background: #fff;
+  height: 200px;
+}
+.orange-bottom {
+  background: #ff6b00;
+  height: 35px;
+}
+
+/* 4. 카드 배치 (상-하-상) */
+.card {
+  position: absolute;
+  width: 23%;
+  cursor: pointer;
+}
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.card .on {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: 0.3s;
+}
+.card:hover .on {
+  opacity: 1;
+}
+
+.card-pink {
+  left: 4%;
+  top: 0;
+}
+.card-skull {
+  left: 50%;
+  bottom: 0;
+} /* 바닥에 밀착 */
+.card-mockup {
+  right: 2%;
+  top: 0;
+}
+.card-mockup img {
+  border-radius: 0 !important;
+}
+
+/* 5. 타이틀 영역 디자인 */
+.title-area {
+  position: absolute;
+  bottom: 10%;
+  left: 4%;
+  z-index: 1000;
+}
+
+/* 붓글씨 이미지 크기 제한 */
+.brush-img {
+  width: 280px;
+  height: auto;
+  display: block;
+  margin-bottom: 5px; /* 아래 텍스트와 밀착시키기 위해 조정 */
+}
+
+/* 메인 영문 텍스트 */
+.main-text {
+  font-weight: 800;
+  font-size: 4.5rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* 이름 및 포트폴리오 텍스트 */
+.sub-text {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #fff; /* text-grey */
+  letter-spacing: 0.1em;
+  margin-top: -2px;
+}
+
+/* /////////////////////////////////자기소개 css////////////////////// */
+/* /////////////////////////////////////////////////////////////////////// */
+/* --- 자기소개 섹션 최종본 --- */
+.about-me {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* 사이드바 */
+.profile-side {
+  width: 380px;
+  height: 92vh;
+  background-color: #ff6b00;
+  margin-left: 60px;
+  border-radius: 0 0 190px 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0;
+  box-sizing: border-box;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+/* 이미지 호버 효과 */
+.profile-group {
+  position: relative;
+  width: 260px;
+  height: 260px;
+}
+.profile-img-box {
+  width: 100%;
+  height: 100%;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  transition: 0.3s;
+  background-color: #c3ff6e;
+}
+.profile-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.3s;
+}
+.profile-img.hover {
+  opacity: 0;
+}
+.profile-group:hover .profile-img-box {
+  background-color: #c3ff6e;
+}
+.profile-group:hover .profile-img.default {
+  opacity: 0;
+}
+.profile-group:hover .profile-img.hover {
+  opacity: 1;
+}
+.sticker {
+  position: absolute;
+  right: -10px;
+  bottom: 10px;
+  width: 60px;
+  z-index: 11;
+}
+
+/* 이름/이메일 */
+.profile-text {
+  text-align: center;
+  margin-top: 25px;
+  color: #1a1a1a;
+}
+.user-name {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0;
+}
+.user-email {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+/* 스킬 정렬 */
+.skill-section {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+.icon-carrot {
+  width: 24px;
+}
+.skill-title {
+  color: #1a1a1a;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.skill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 210px;
+}
+.skill-grid img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* 점 장식 */
+.dot-deco {
+  margin-top: auto;
+  font-size: 30px;
+  writing-mode: vertical-rl;
+  color: #1a1a1a;
+  opacity: 0.5;
+}
+
+/* 오른쪽 컨텐츠 */
+.content-side {
+  flex: 1;
+  padding: 100px 80px;
+  color: white;
+  z-index: 5;
+}
+.main-copy {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 60px;
+}
+.highlight {
+  color: #ff6b00;
+}
+.experience-box h3 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #333;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+.exp-item {
+  margin-bottom: 40px;
+}
+.exp-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.exp-title span {
+  color: #888;
+  font-size: 0.9rem;
+  margin-left: 10px;
+  font-weight: normal;
+}
+.exp-item ul {
+  list-style: none;
+  padding: 0;
+}
+.exp-item li {
+  color: #bbb;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+.exp-item li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #ff6b00;
+  font-weight: bold;
+}
+
+/* 배경 고양이 */
+.bg-illust-deco {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 650px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 자기소개 문구 */
+/* 오른쪽 전체 여백 */
+.about-me .content-side {
+  flex: 1;
+  padding-top: 180px;
+  padding-left: 80px;
+  padding-right: 80px;
+  color: white;
+}
+
+/* 메인 카피 */
+/* 1. 기본 문구 굵기 조절 */
+.about-me .main-copy {
+  font-size: 3.5rem; /* 전체 크기는 취향껏 조절하세요 */
+  line-height: 1.2;
+  margin-bottom: 250px;
+}
+/* 첫 번째 줄: 주황색 + 가장 굵게 */
+.about-me .bold-orange {
+  color: #ff6b00;
+  font-weight: 900; /* 가장 두꺼운 수치 */
+}
+
+/* 두 번째 줄: 흰색 + 아주 굵게 */
+.about-me .bold-white {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+/* 마지막 줄: 흰색 + 아주 얇게 */
+.about-me .thin-white {
+  color: #ffffff;
+  font-weight: 100; /* 가장 얇은 수치 */
+  /* 폰트에 따라 100이 너무 얇으면 200으로 올려보세요 */
+}
+
+/* 경력 타이틀 + 가로선 */
+.about-me .exp-main-title {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #fff; /* 하얀색 가로선 */
+  padding-bottom: 15px;
+  margin-bottom: 40px;
+}
+
+/* 경력 사항들을 3줄로 나누는 마법의 코드 */
+.about-me .exp-grid {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px; /* 각 칸 사이의 간격 */
+}
+
+/* 각 경력 칸 */
+.about-me .exp-item {
+  flex: 1; /* 3칸이 똑같은 너비를 가짐 */
+}
+
+/* 경력 회사명 + 날짜 */
+.about-me .exp-header {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+.about-me .exp-header span {
+  color: #888;
+  font-size: 0.8rem;
+  display: block; /* 날짜를 이름 밑으로 내림 */
+  margin-top: 5px;
+}
+
+/* 경력 세부 텍스트 */
+.about-me .exp-item p {
+  font-size: 0.85rem;
+  color: #bbb;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
