@@ -10,7 +10,7 @@ button,
 .card,
 .card img,
 .main-title-img {
-  cursor: url("assets/images/cursor.png"), pointer !important;
+  cursor: url("assets/images/cursor_point.png"), pointer !important;
 }
 
 /* [특정 페이지 전용] 배경은 이 클래스가 감싸는 곳에만 적용합니다 */
@@ -524,4 +524,81 @@ body {
   color: #333; /* 리스트 글자는 진한 회색 */
   margin-bottom: 12px;
   font-weight: 500;
+}
+
+/* /////////////////////////////////////////////////////요리조리 메인 화면 페이지///////////////////////////// */
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* 요리조리 섹션 전체 */
+.project-page.yorizori {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+
+  /* 배경 이미지 그대로 쓰기! */
+  background-image: url("assets/images/yorizori_main_bg.png");
+  background-size: cover; /* 화면에 빈틈없이 꽉 채우기 */
+  background-position: center; /* 이미지 중앙 맞추기 */
+  background-repeat: no-repeat;
+
+  align-items: center; /* 내용물들 세로 중앙 정렬 */
+}
+
+/* 왼쪽 설명 영역 */
+.project-info {
+  flex: 0 0 45%;
+  padding-left: 8%; /* 왼쪽 여백 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* icons 폴더에 있는 로고 */
+.project-logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.project-title {
+  font-size: 60px;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 25px;
+}
+
+.project-description {
+  font-size: 19px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 45px;
+  word-break: keep-all; /* 한글 단어 예쁘게 줄바꿈 */
+}
+
+/* 라임 그린 버튼 */
+.link-button {
+  display: inline-block;
+  width: fit-content;
+  padding: 16px 40px;
+  background-color: #8cc63f;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px; /* 알약 모양 */
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* 오른쪽 이미지 영역 */
+.project-visual {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px; /* 위아래 이미지 간격 */
+}
+
+/* 메인 화면 이미지 공통 스타일 */
+.visual-img {
+  width: 50%; /* 이미지 크기 비율 */
+  border-radius: 5px;
+  /* 시안처럼 입체감을 주기 위해 부드러운 그림자 추가 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
