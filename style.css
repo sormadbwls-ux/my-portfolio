@@ -1,3 +1,8 @@
+body {
+  -webkit-font-smoothing: antialiased; /* 맥/크롬에서 글자를 부드럽게 */
+  -moz-osx-font-smoothing: grayscale; /* 맥 파이어폭스 */
+  text-rendering: optimizeLegibility; /* 가독성 최적화 */
+}
 /* 마우스 커서 모양 변경 */
 /* 1. 웹사이트 전체 마우스 모양 변경 */
 body {
@@ -459,69 +464,81 @@ body {
 /* ///////////////////////////////////////////////////////////////////목차/////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* 1. 페이지 전체 레이아웃 (좌우로 찢기!) */
+/* 1. 전체 페이지 레이아웃 */
 .contents-page {
-  display: flex; /* 좌우 배치를 위해 필수! */
+  display: flex;
   width: 100%;
-  min-height: 100vh; /* 화면 높이를 꽉 채우기 */
-  background-color: #f4f4f4; /* 시안처럼 밝은 회색 배경 */
+  min-height: 100vh;
+  background-color: #f1f1f1; /* 시안의 밝은 배경색 */
 }
 
-/* 2. 왼쪽 주황색 타이틀 영역 */
+.contents-page .main-title {
+  color: #ffffff !important;
+}
+
+.contents-page .sub-title {
+  color: #ffffff !important;
+}
+/* 2. 왼쪽 오렌지 타이틀 영역 */
 .contents-title {
-  flex: 0 0 35%; /* 너비의 35% 차지 */
-  background-color: #ff6b00; /* 강렬한 주황색 */
-  color: white;
-  padding: 100px 50px; /* 안쪽 여백 */
+  flex: 0 0 35%; /* 시안 비율 */
+  background-color: #ff6b00; /* 오렌지 배경 */
+  padding: 100px 60px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
 .main-title {
-  font-size: 80px; /* CONTENTS 글자 크기 */
+  font-size: 80px !important;
   font-weight: 900;
-  margin: 0;
+  line-height: 1.1;
 }
 
 .sub-title {
-  font-size: 40px; /* 목차 글자 크기 */
-  margin-top: 10px;
+  font-size: 30px;
+  margin-top: 0px;
 }
 
-/* 3. 오른쪽 목차 리스트 영역 (2단 정렬!) */
+/* 3. 오른쪽 목차 리스트 영역 */
 .contents-list {
-  flex: 1; /* 나머지 공간 다 쓰기 */
-  display: flex; /* 2열로 나누기 위해 flex */
-  align-items: flex-end;
-  padding-bottom: 70px;
-  justify-content: space-around; /* 열 사이 간격 넉넉히 */
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+
+  /* 1. 상단 라인을 맞추는 설정은 유지하되 */
+  align-items: flex-start;
+
+  /* 2. 위쪽 패딩을 확 늘려서 리스트들만 아래로 밀어냅니다 */
+  padding: 600px 80px 100px 80px;
 }
 
 /* 각각의 열 (01-02열, 03-04열) */
 .contents-column {
   display: flex;
   flex-direction: column;
-  gap: 80px; /* 위아래 항목 사이 간격 */
+  gap: 120px; /* 항목 사이 수직 간격 */
 }
 
 /* 목차 개별 항목 */
 .category-num {
-  color: #ff6b00; /* 번호와 제목은 주황색 */
-  font-size: 26px;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #ff6b00; /* 밑줄 추가로 강조! */
+  color: #ff6b00 !important; /* 무조건 주황색 */
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #ff6b00; /* 밑줄 */
   display: inline-block;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
 }
 
 .work-list {
-  list-style: none; /* 점 없애기 */
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .work-list li {
-  font-size: 18px;
-  color: #333; /* 리스트 글자는 진한 회색 */
+  font-size: 19px;
+  color: #333; /* 리스트 글자 검정색 */
   margin-bottom: 12px;
   font-weight: 500;
 }
@@ -529,77 +546,79 @@ body {
 /* /////////////////////////////////////////////////////요리조리 메인 화면 페이지///////////////////////////// */
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* 요리조리 섹션 전체 */
+/* 요리조리 전체 컨테이너 */
 .project-page.yorizori {
   display: flex;
   width: 100%;
   min-height: 100vh;
-
-  /* 배경 이미지 그대로 쓰기! */
   background-image: url("assets/images/yorizori_main_bg.png");
-  background-size: cover; /* 화면에 빈틈없이 꽉 채우기 */
-  background-position: center; /* 이미지 중앙 맞추기 */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-
-  align-items: center; /* 내용물들 세로 중앙 정렬 */
+  align-items: center;
 }
 
 /* 왼쪽 설명 영역 */
-.project-info {
+.project-page.yorizori .project-info {
   flex: 0 0 45%;
-  padding-left: 8%; /* 왼쪽 여백 */
+  padding-left: 8%;
   display: flex;
   flex-direction: column;
 }
 
-/* icons 폴더에 있는 로고 */
-.project-logo {
+/* 로고 */
+.project-page.yorizori .project-logo {
   width: 100px;
   margin-bottom: 10px;
 }
 
-.project-title {
+/* ★ 핵심: 요리조리 안의 제목임을 명시해서 색상 고정 */
+.project-page.yorizori .project-title {
   font-size: 60px;
   font-weight: 800;
-  color: #222;
+  color: #222 !important; /* 다시는 하얗게 변하지 않도록 고정 */
   margin-bottom: 25px;
+  padding-left: 0 !important;
+  /* 다른 곳에서 들어올 수 있는 방해 요소 차단 */
+  margin-right: 0;
+  flex: none;
 }
 
-.project-description {
+.project-page.yorizori .project-description {
   font-size: 19px;
   line-height: 1.7;
   color: #444;
   margin-bottom: 45px;
-  word-break: keep-all; /* 한글 단어 예쁘게 줄바꿈 */
+  word-break: keep-all;
 }
 
 /* 라임 그린 버튼 */
-.link-button {
+.project-page.yorizori .link-button {
   display: inline-block;
   width: fit-content;
   padding: 16px 40px;
   background-color: #8cc63f;
   color: white;
   text-decoration: none;
-  border-radius: 50px; /* 알약 모양 */
+  border-radius: 50px;
   font-weight: bold;
   font-size: 18px;
 }
 
 /* 오른쪽 이미지 영역 */
-.project-visual {
+.project-page.yorizori .project-visual {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px; /* 위아래 이미지 간격 */
+  gap: 30px;
 }
 
-/* 메인 화면 이미지 공통 스타일 */
-.visual-img {
-  width: 50%; /* 이미지 크기 비율 */
+/* 메인 화면 이미지 */
+.project-page.yorizori .visual-img {
+  width: 50%;
   border-radius: 5px;
-  /* 시안처럼 입체감을 주기 위해 부드러운 그림자 추가 */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -722,27 +741,32 @@ body {
 }
 
 /* /////////////////////////////////////////////////////요리조리 문제정의///////////////////////////////// */
-/* ///////////////////////////////////////////////////////////////////////////////////////////////////////// */
 .problem-definition {
   width: 100%;
   min-height: 100vh;
-  padding: 120px 50px;
-  background-color: #f8f8f8; /* 배경은 아주 연한 회색 */
-  text-align: left;
+  /* 상단 여백을 100px로 통일 */
+  padding: 100px 80px;
+  background-color: #f8f8f8;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
-.sub-label {
+/* 문제정의 섹션 안의 헤더 */
+.problem-definition .header {
+  text-align: left;
+  margin-bottom: 60px;
+}
+
+.problem-definition .sub-label {
   color: #a5e937;
   font-weight: bold;
   font-size: 14px;
 }
-.main-title {
+
+.problem-definition .main-title {
   font-size: 32px;
   margin-top: 8px;
-  margin-bottom: 80px;
+  margin-bottom: 0;
   color: #141e03;
 }
 
@@ -751,103 +775,114 @@ body {
   align-items: center;
   justify-content: center;
   gap: 120px;
-  margin-top: 200px;
+  /* 카드와 제목 사이 간격 */
+  margin-top: 80px;
 }
 
 .problem-card {
-  position: relative; /* 원형 아이콘의 기준점 */
+  position: relative;
   width: 320px;
   background: #fff;
   padding: 60px 35px 40px;
-  border-radius: 20px; /* 시안처럼 부드러운 모서리 */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* 은은한 카드 그림자 */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-/* ★ 핵심: 오른쪽 상단에 걸쳐진 라임색 원 */
 .icon-circle {
   position: absolute;
-  top: -45px; /* 위로 반쯤 걸치게 */
-  right: -25px; /* 오른쪽으로 살짝 튀어나오게 */
+  top: -45px;
+  right: -25px;
   width: 110px;
   height: 110px;
-  background-color: #a5e937; /* 라임 포인트 컬러 */
+  background-color: #a5e937;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(165, 233, 55, 0.3); /* 원형 부분에만 생기는 강조 그림자 */
 }
 
 .icon-circle img {
-  width: 65px; /* 잘라온 PNG 아이콘 크기 조절 */
+  width: 65px;
   height: auto;
 }
 
 .card-num {
   font-size: 36px;
   font-weight: bold;
-  color: #324c08; /* 진한 녹색 텍스트 */
+  color: #324c08;
   margin-bottom: 15px;
   display: block;
 }
 
-.card-title {
+/* 문제정의 카드 제목 */
+.problem-card .card-title {
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 20px;
   color: #111;
 }
 
-.card-desc {
+.problem-card .card-desc {
   font-size: 17px;
   color: #666;
   line-height: 1.6;
-  word-break: keep-all; /* 단어 단위 줄바꿈으로 깔끔하게 */
+  word-break: keep-all;
 }
 
 /* /////////////////////////////////////////////////////요리조리 문제 해결/////////////////////////////////////// */
-/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 .solution-section {
   width: 100%;
   min-height: 100vh;
   background-color: #f5f5f5;
-  padding: 80px 100px; /* 제목 위치용 왼쪽 여백 */
+  /* 상단 여백 100px, 좌측 여백 80px로 문제정의와 동일하게 맞춤 */
+  padding: 100px 80px;
   display: flex;
   flex-direction: column;
 }
 
-/* 제목 영역: 왼쪽 상단 고정 */
-.header {
+/* 문제해결 섹션 안의 헤더 */
+.solution-section .header {
   text-align: left;
   margin-bottom: 60px;
 }
 
-/* 카드 컨테이너: 가로 중앙 정렬 및 카드 간격 */
+.solution-section .sub-label {
+  color: #a5e937;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.solution-section .main-title {
+  font-size: 32px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  color: #141e03;
+}
+
 .solution-container {
   display: flex;
   justify-content: center;
-  gap: 60px; /* 카드 2개 사이 간격 */
-  margin-top: 100px; /* 위쪽 여백으로 아래쪽으로 배치 */
+  gap: 60px;
+  /* 카드와 제목 사이 간격 */
+  margin-top: 80px;
   width: 100%;
 }
 
-/* 개별 카드 */
 .solution-card {
-  width: 380px; /* 2개일 때는 3개일 때보다 살짝 넓게 잡아도 예쁩니다 */
+  width: 380px;
   background: #fff;
   padding: 60px 40px;
   border-radius: 30px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
-  text-align: center; /* 카드 내부 텍스트 중앙 정렬 */
+  text-align: center;
 }
 
-/* ★ 아이콘: 원형 박스 중앙 배치 */
 .icon-circle-center {
   width: 140px;
   height: 140px;
   background-color: #a5e937;
   border-radius: 50%;
-  margin: 0 auto 40px; /* 카드 내 가로 중앙 및 아래 텍스트와 간격 */
+  margin: 0 auto 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -858,17 +893,262 @@ body {
   height: auto;
 }
 
-/* 텍스트 스타일 (색상은 직접 수정 가능하시게 기본만!) */
-.card-title {
+/* 문제해결 카드 제목 */
+.solution-card .card-title {
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 25px;
   word-break: keep-all;
+  color: #111;
 }
 
-.card-desc {
+.solution-card .card-desc {
   font-size: 18px;
   color: #666;
   line-height: 1.6;
   word-break: keep-all;
+}
+/* ///////////////////////////////////////////////////////콜로소 인트로 페이지////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////// */
+.coloso-intro {
+  width: 100%;
+  background-color: #1e1e1e; /* 기본 배경 */
+}
+
+/* 상단 이미지 영역 */
+.main-visual {
+  width: 100%;
+  line-height: 0; /* 이미지 하단 미세 공백 제거 */
+}
+
+.main-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 하단 블랙 정보 바 */
+.bottom-info-bar {
+  background-color: #1a1a1a; /* 시안의 다크 그레이/블랙 */
+  padding: 45px 60px;
+  color: #fff;
+}
+
+.info-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 로고 */
+.coloso-logo img {
+  height: 40px; /* 로고 크기에 맞게 조절 */
+}
+
+/* 중앙 타이틀 영역 */
+.project-title {
+  flex: 1;
+  padding-left: 100px;
+  margin-right: auto;
+  color: #fff;
+}
+
+.project-title .sub-txt {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.project-title .main-txt {
+  font-size: 32px;
+}
+
+/* 오른쪽 정보 텍스트 */
+.project-meta {
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #999;
+}
+
+.project-meta p {
+  margin: 0;
+}
+
+/* //////////////////////////////////////////////////////////콜로소 문제정의 디테일 페이지//////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.coloso_detail_section {
+  width: 100%;
+  background-image: url("assets/images/coloso_bg_01.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  padding-bottom: 150px; /* 하단 여백 확보 */
+  min-height: 1000px; /* 배경 이미지 전체를 충분히 보여주기 위해 높이 상향 */
+}
+
+.coloso_detail_inner {
+  max-width: 1400px; /* 폭을 넓혀서 양 끝으로 더 벌어지게 설정 */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* 양 끝 정렬 핵심 */
+  align-items: center;
+  padding-top: 400px; /* ★ 콘텐츠를 아래로 더 많이 내림 */
+  padding-left: 50px; /* 왼쪽 끝 여백 */
+  padding-right: 50px; /* 오른쪽 끝 여백 */
+}
+
+.coloso_detail_left {
+  width: 55%; /* 왼쪽 영역 확보 */
+}
+
+.coloso_detail_item {
+  display: flex;
+  margin-bottom: 60px; /* 아이템 간 간격 살짝 넓힘 */
+}
+
+.coloso_detail_icon {
+  width: 90px;
+  height: 90px;
+  margin-right: 25px;
+  flex-shrink: 0;
+}
+
+.coloso_detail_text h3 {
+  color: #fff;
+  font-size: 26px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.coloso_detail_text p {
+  color: #ccc;
+  font-size: 17px;
+  line-height: 1.8; /* 가독성을 위해 줄간격 상향 */
+  word-break: keep-all;
+}
+
+/* 오른쪽 영역: 크기 줄이기 및 정렬 */
+.coloso_detail_right {
+  width: 30%; /* 가로 폭을 줄임 */
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 끝으로 밀착 */
+}
+
+.coloso_detail_strategy_img {
+  width: 100%;
+  max-width: 340px; /* ★ 이미지 크기를 더 작게 제한 (기존 420px -> 340px) */
+  height: auto;
+}
+/* ///////////////////////////////////////////////////////////콜로소 레이아웃 설명 페이지/////////////////////////// */
+/* ///////////////////////////////////////////////////////////////////////////////////////// */
+.guide_section.guide_page_01 {
+  background-color: #f2f2f2;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.guide_inner {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  max-width: 1600px;
+  margin: 0 auto;
+  margin-top: -20;
+}
+
+.box_left {
+  flex: 0 0 55%;
+}
+.box_left img {
+  width: 100%;
+  display: block;
+}
+
+.box_right {
+  flex: 0 0 25%;
+  position: relative; /* 버튼 배치의 기준점! 중요 */
+}
+
+.long_img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.btn_fix {
+  position: absolute;
+  /* PNG 아래쪽 투명 여백 공간에 맞게 조절 (예: 50px~100px) */
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: block;
+  background-color: #2470ff;
+  color: #fff;
+  padding: 20px 80px;
+  border-radius: 50px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+/* ///////////////////////////////////상세페이지 작업 아직 안했음 ////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////실무 작업 표지 작업//////////////////////////////////// */
+/* ////////////////////////////////////////////////////////////////////////////////////////////// */
+.exp_section {
+  width: 100%;
+  height: 1080px; /* 페이지 높이 고정 */
+  background-color: #1a1a1a;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* 수직 중앙 정렬 */
+}
+
+.exp_inner {
+  width: 1920px;
+  margin: 0 auto;
+  padding: 0 100px; /* 좌우 여백 확보 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.exp_info {
+  flex: 0 0 auto;
+}
+
+.exp_title {
+  font-size: 80px; /* 1920 해상도에 맞춰 크기 키움 */
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 15px;
+  letter-spacing: -2px;
+}
+
+.exp_subtitle {
+  font-size: 24px;
+  color: #888;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* 오른쪽 이미지: 시안처럼 바닥에 딱 붙이고 우측으로 배치 */
+.exp_visual {
+  position: absolute;
+  right: 0;
+  bottom: 0; /* 바닥 밀착 */
+  width: 55%; /* 시안 비율에 맞게 조절 */
+}
+
+.exp_visual img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
