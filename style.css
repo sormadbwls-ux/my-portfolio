@@ -1,4 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 패딩을 넣어도 박스 크기가 안 변하게 해주는 꿀옵션 */
+}
 /* 1. 가장 위에 선언합니다 */
+
 :root {
   --bg-dark: #1a1a1a;  /* 기본 검정 */
   --bg-light: #f2f2f2; /* 고담 인트로용 회색 */
@@ -1598,9 +1604,6 @@ body {
 }
 /* //////////////////////////////////////////////////////////////////////////고담 인트로 다음 상세페이지//// */
 /* //////////////////////////////////////////////////////////////////// */
-/* [GOTHAM DETAIL 01] 고정 스타일 */
-
-/* [GOTHAM DETAIL 01] 로고 우측 정렬 버전 */
 
 .gotham_detail_section_01 {
   background-color: #1a1a1a;
@@ -1649,9 +1652,9 @@ body {
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 /* [GOTHAM DETAIL 03] 고정 스타일 */
 .gotham_detail_section_03 {
-  background-color: #f2f2f2; /* 배경색 */
+  background-color: #f2f2f2;
   width: 100%;
-  padding: 80px 0;
+  padding: 100px 0;
   display: flex;
   justify-content: center;
 }
@@ -1659,28 +1662,28 @@ body {
 .gotham_detail_inner_03 {
   width: 1280px;
   display: flex;
-  align-items: center; /* 좌우 덩어리 높이 정렬 */
-  gap: 100px; /* 왼쪽 그룹과 오른쪽 사진 사이 간격 */
+  align-items: center; /* 좌우 덩어리의 세로축을 맞춤 */
+  gap: 80px; /* 왼쪽 그룹과 오른쪽 큰 사진 사이의 간격 */
 }
 
-/* 로고를 아래 사진 4개(grid)의 수직 중앙선에 맞추는 핵심 설정 */
+/* ★ 핵심: 로고를 아래 그리드의 중앙에 맞추는 마법 */
 .gotham_left_group_03 {
   display: flex;
   flex-direction: column;
-  align-items: center; /* ★ 로고 중앙 정렬 */
+  align-items: center; /* ★ 이 설정이 로고를 사진 4개 뭉치의 가운데로 보냅니다 */
   flex: 1;
 }
 
 .gotham_logo_03 {
   height: 45px;
   width: auto;
-  margin-bottom: 40px; /* 로고와 사진 사이 간격 */
+  margin-bottom: 40px; /* 로고와 사진들 사이의 세로 여백 */
 }
 
 .gotham_grid_03 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px; /* 사진들 사이 간격 */
+  grid-template-columns: repeat(2, 1fr); /* 2열 배치 */
+  gap: 20px; /* 사진 4개 사이의 상하좌우 간격 - 디자이너님 취향껏 조절 */
 }
 
 .gotham_grid_03 img {
@@ -1691,10 +1694,400 @@ body {
 
 .gotham_right_group_03 {
   flex: 1.2;
+  display: flex;
+  align-items: flex-start; /* 일단 윗선에 맞춘 뒤 */
+  padding-top: 90px;
 }
 
-.gotham_right_group_03 img {
+.gotham_big_img_03 {
   width: 100%;
   height: auto;
   display: block;
+}
+/* ////////////////////////////////////////////푸르지오 페이지 작업물////////////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* [SECTION 02] 사진 키운 버전 */
+/* [SECTION 02] 푸르지오 슬라이드 - 최적화 버전 */
+.pruzio_slide_section_02 {
+  background-color: #1a1a1a;
+  width: 100%;
+  padding: 180px 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* 영역 밖 사진 숨김 */
+  color: #fff;
+}
+
+/* 좌측 여백 가이드라인 (반응형) */
+.pruzio_slide_inner_02 {
+  width: 100%;
+  padding-left: 8vw; /* 피그마 마진처럼 작동 */
+  box-sizing: border-box;
+}
+
+/* 텍스트 영역: 고담 스타일 동기화 */
+.pruzio_slide_text_02 {
+  margin-bottom: 80px;
+}
+
+.pruzio_slide_text_02 h3 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin: 0 0 15px -2px; /* 위 0, 우 0, 아래 15, 좌 -2(보정) */
+}
+
+.pruzio_slide_text_02 p {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.6;
+  opacity: 0.7;
+  max-width: 700px;
+}
+
+/* 슬라이드 컨테이너 */
+.pruzio_slide_container_02 {
+  width: 100%;
+}
+
+.pruzio_slide_track_02 {
+  display: flex;
+  /* (사진 400px + 간격 20px) * 20장 = 8400px */
+  width: calc(420px * 20); 
+  animation: pruzio_loop_big 40s linear infinite;
+  
+  /* [렉 방지] GPU를 사용하도록 강제하여 애니메이션을 부드럽게 만듦 */
+  will-change: transform;
+}
+
+/* 마우스 올리면 정지 */
+.pruzio_slide_track_02:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+
+.pruzio_slide_item_02 {
+  width: 400px;
+  margin: 0 10px; /* 좌우 10px씩 총 20px */
+  flex-shrink: 0; /* 사진이 찌그러지는 것 방지 */
+}
+
+.pruzio_slide_item_02 img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 6px;
+  /* 이미지 로딩 시 렉 방지 */
+  backface-visibility: hidden;
+}
+
+/* 애니메이션: 10장 지점(4200px)에서 리셋 */
+@keyframes pruzio_loop_big {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(calc(-420px * 10), 0, 0); }
+}
+
+.pruzio_slide_footer_02 {
+  text-align: center;
+  margin-top: 60px;
+  opacity: 0.5;
+  font-size: 14px;
+}
+/* ////////////////////////////////////////////////////아직도 소환중이랍니다 페이지////////////////////////////////////////////////////// */
+/* 왼쪽 비주얼 영역을 이미지로 채우기 */
+/* [SECTION 03] 게임 섹션 - 밀림 방지 최종본 */
+
+.game_section_03 {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.game_left_area {
+  flex: 0 0 45%; 
+  height: 100vh;
+  background-image: url('assets/images/game_visual_left.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.game_right_area {
+  flex: 1;
+  padding: 80px 8vw;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-left: -70px;
+}
+
+/* --- 폰트 가독성 수정 포인트 --- */
+.game_text_box h3 {
+  font-size: 34px;      /* 크기 살짝 키움 */
+  font-weight: 800;      /* 더 두껍게 */
+  color: #000000;       /* 완전 검정 */
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+}
+
+.game_text_box p {
+  font-size: 19px;      /* 18px -> 19px 확대 */
+  font-weight: 500;      /* 300(두께) -> 500으로 올려서 선명하게 */
+  line-height: 1.8;      /* 줄간격 확보 */
+  color: #000000;       /* 흐린 색 버리고 완전 검정 */
+  margin-bottom: 50px;
+  max-width: 750px;     /* 가로 폭 살짝 넓힘 */
+  word-break: keep-all; /* 한글 단어 안 잘리게 */
+}
+
+/* 통이미지 박스 */
+.game_contents_all {
+  width: 100%;
+  max-width: 800px;     /* 통이미지 가이드라인 */
+}
+
+.game_contents_all img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* ///////////////////////////////////////////킹스로드 페이지 /////////////////////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.king_section_04 {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+  padding: 80px 8vw !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* 텍스트 박스 */
+.king_text_box {
+  width: 100%;
+  max-width: 1550px;
+  margin-bottom: 50px;
+}
+
+/* 제목: 다른 페이지와 동일한 '검정색'으로 강제 고정 */
+.king_text_box h3 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #000000 !important; /* 완전 블랙 */
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+/* 설명문 형식 통일 */
+.king_text_box p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333333 !important; /* 가독성 좋은 진한 회색/검정 */
+  text-align: justify;
+  word-break: keep-all; /* 한글 줄바꿈 예쁘게 */
+}
+
+/* 이미지&GIF 병렬 배치 (삼면도 줄임) */
+.king_content_row {
+  display: flex;
+  width: 100%;
+  max-width: 1550px;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.king_main_img {
+  flex: 0 0 60%; 
+}
+
+.king_main_img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.king_gif_group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gif_box {
+  width: 100%;
+  background: #fff;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.gif_box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 하단 캡션 라인 정렬 */
+.king_final_caption_line {
+  display: flex;
+  width: 100%;
+  max-width: 1550px;
+  gap: 50px;
+  margin-top: 35px;
+  align-items: flex-start;
+}
+
+.cap_left_box {
+  flex: 0 0 60%;
+  text-align: center;
+}
+
+.cap_right_box {
+  flex: 1;
+  text-align: center;
+}
+
+.king_final_caption_line p {
+  font-size: 15px;
+  color: #000 !important;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+}
+/* /////////////////////////////////////////////////////프로젝트 나이 //////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////////////////////////////////////////// */
+.nai_section {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #2b2b2b; /* 시안의 어두운 배경색 */
+  padding: 80px 8vw !important; /* 이전 페이지와 동일한 좌우 여백 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* 텍스트 스타일 (이전 페이지와 통일) */
+.nai_text_box {
+  width: 100%;
+  max-width: 1600px;
+  margin-bottom: 50px;
+}
+
+.nai_text_box h3 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff !important;
+  margin-bottom: 20px;
+}
+
+.nai_text_box p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #cccccc !important;
+  text-align: justify;
+  word-break: keep-all;
+}
+
+/* ★ 이미지 배치: 시안의 레이아웃을 그대로 유지 */
+.nai_full_content {
+  width: 100%;
+  max-width: 1600px;
+  display: flex;
+  justify-content: center;
+}
+
+.nai_full_content img {
+  width: 100%; /* 부모 너비에 꽉 차게 */
+  height: auto; /* 비율 유지 */
+  display: block;
+}
+/* ///////////////////////////////////////////개인 연구작 1p////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////////////////////////////////// */
+.research_full_section {
+  width: 100%;
+  height: 1280px;
+  background-color: #222222;
+  padding: 120px 0 !important;
+  overflow: hidden;
+}
+
+.research_text_full {
+  width: 100%;
+  padding: 0 8vw;
+  margin-bottom: 120px;
+  box-sizing: border-box;
+}
+
+.research_text_full h3 { font-size: 32px; color: #fff; font-weight: 800; margin-bottom: 20px; }
+.research_text_full p { font-size: 18px; line-height: 1.8; color: #ccc; }
+
+/* 슬라이드 트랙 설정 */
+.research_slide_container { width: 100%; position: relative; }
+
+.research_slide_track {
+  display: flex;
+  /* ★ 수정: 이미지 18개 분량의 총 너비 (600px + 좌우패딩 20px = 620px) */
+  /* 620px * 18 = 11160px */
+  width: 11160px; 
+  animation: scroll 40s linear infinite; /* 속도가 너무 빠르면 초(s)를 늘리세요 */
+}
+
+.research_slide_track:hover { animation-play-state: paused; }
+
+.slide {
+  width: 600px; 
+  height: 700px; 
+  padding: 0 10px; /* 좌우 10px씩 총 20px 여백 */
+  flex-shrink: 0;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  cursor: zoom-in;
+  transition: 0.3s;
+}
+
+/* ★ 무한 애니메이션 수치 교정 */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  /* ★ 중요: 원본 이미지 9개가 다 지나갔을 때 리셋 (620px * 9 = 5580px) */
+  100% { transform: translateX(-5580px); } 
+}
+
+/* --- 모달 스타일 (클릭 시 맨 위로 오도록 z-index 수정) --- */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 100000; /* ★ 슬라이드보다 무조건 위로 */
+  left: 0; top: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.95); 
+  cursor: zoom-out;
+  justify-content: center; /* 중앙 정렬용 */
+  align-items: center;
+}
+
+.modal-content {
+  /* 화면의 90%가 아니라 95%까지 꽉 채우고 싶을 때 */
+  max-width: 95%; 
+  max-height: 95%; 
+  
+  object-fit: contain; /* 비율은 절대 깨지지 않게 유지 */
+  animation: zoom 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); /* 팝업 뜰 때 쫀득하게 */
+}
+@keyframes zoom {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close { 
+  position: absolute; 
+  top: 30px; right: 50px; 
+  color: #fff; font-size: 50px; 
+  font-weight: bold; cursor: pointer; 
 }
