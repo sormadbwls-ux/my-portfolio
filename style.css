@@ -108,8 +108,7 @@ button,
 /* 4. 카드 배치 (상-하-상) */
 .card {
   position: absolute;
-  width: 23%;
-  cursor: pointer;
+  width: 20%;
 }
 .card img {
   width: 100%;
@@ -129,7 +128,7 @@ button,
 
 .card-pink {
   left: 4%;
-  top: 0;
+  top: -4vh;
 }
 .card-skull {
   left: 50%;
@@ -141,6 +140,11 @@ button,
 }
 .card-mockup img {
   border-radius: 0 !important;
+}
+
+/* 카드 움직이는것 애니메이션*/
+.card:hover {
+  transform: translateY(-10px);
 }
 
 /* 5. 타이틀 영역 디자인 */
@@ -177,7 +181,7 @@ button,
 }
 
 /* /////////////////////////////////자기소개 css////////////////////// */
-/* /////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////////////////////////////////////*/
 .portfolio-container {
   background-color: #1a1a1a;
   background-image: url("assets/images/bg_illus.png");
