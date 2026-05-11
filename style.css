@@ -1,73 +1,19 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* 패딩을 넣어도 박스 크기가 안 변하게 해주는 꿀옵션 */
-}
-/* 1. 가장 위에 선언합니다 */
-
+/* 색상 팔렛트 */
 :root {
-  --bg-dark: #1a1a1a;  /* 기본 검정 */
-  --bg-light: #f2f2f2; /* 고담 인트로용 회색 */
-  
-  /* 현재 적용될 배경색을 저장하는 변수 (기본값은 어두운색) */
-  --current-bg: var(--bg-dark); 
+  --bg-dark: #1e1e1e;
+  --bg-light: #f2f2f2;
+  --current-bg: var(--bg-dark);
+  --text-white: #fff;
+  --text-black: #1e1e1e;
 }
-
-/* 2. 공통 컨테이너 설정 */
-.portfolio-container {
-  width: 1920px;
-  height: 1080px;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-  
-  /* 배경색을 직접 쓰지 말고 변수를 연결하세요 */
-  background-color: var(--current-bg); 
-  transition: background-color 0.3s; /* 색 바뀔 때 부드럽게 */
-}
-
 /* 3. '밝은 배경'이 필요한 섹션에만 붙일 클래스 */
 .portfolio-container.light-mode {
   --current-bg: var(--bg-light); /* 1. 변수 값을 밝은 회색으로 바꾼다 */
-  
   /* ★ 2. 바뀐 변수값을 실제 배경색에 적용하라고 명령한다! */
-  background-color: var(--current-bg) !important; 
-  
+  background-color: var(--current-bg) !important;
   background-image: none !important; /* 3. 유령 배경 제거 */
 }
 
-body {
-  -webkit-font-smoothing: antialiased; /* 맥/크롬에서 글자를 부드럽게 */
-  -moz-osx-font-smoothing: grayscale; /* 맥 파이어폭스 */
-  text-rendering: optimizeLegibility; /* 가독성 최적화 */
-}
-/* 마우스 커서 모양 변경 */
-/* 1. 웹사이트 전체 마우스 모양 변경 */
-body {
-  margin: 0;
-  cursor: url("assets/images/cursor.png"), auto;
-}
-
-a,
-button,
-.card,
-.card img,
-.main-title-img {
-  cursor: url("assets/images/cursor_point.png"), pointer !important;
-}
-
-/* [특정 페이지 전용] 배경은 이 클래스가 감싸는 곳에만 적용합니다 */
-.portfolio-container {
-  background-color: #1a1a1a;
-  background-image: url("assets/images/bg_illus.png");
-  background-repeat: no-repeat;
-  background-position: right bottom;
-  background-size: 800px;
-
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-}
 /* 1. 폰트 등록 */
 @font-face {
   font-family: "NanumSquare";
@@ -79,36 +25,71 @@ button,
   src: url("assets/fonts/NanumSquareR.ttf") format("truetype");
   font-weight: 400;
 }
-
-/* 2. 초기화 및 배경 */
+/* 화면 기본 레이아웃 */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  background-color: #1e1e1e;
-  color: #fff;
+  margin: 0;
+  /* 마우스 커서 모양 변경 */
+  cursor: url("assets/images/cursor.png"), auto;
+
+  /* 다른 운영 체제 폰트 글자 가독성 최적화 */
+  -webkit-font-smoothing: antialiased; /* 맥/크롬에서 글자를 부드럽게 */
+  -moz-osx-font-smoothing: grayscale; /* 맥 파이어폭스 */
+  text-rendering: optimizeLegibility; /* 가독성 최적화 */
+
+  background-color: var(--bg-dark);
+  color: var(--text-white);
   font-family: "NanumSquare", sans-serif;
-  /* overflow: hidden; */
 }
+/* 클릭할때 마우스 커서 모양 변형되는 코드 */
+a,
+button,
+.card,
+.card img,
+.main-title-img {
+  cursor: url("assets/images/cursor_point.png"), pointer !important;
+}
+
+/* 모든 페이지 기본 도형값 */
+.portfolio-container {
+  width: 1920px;
+  height: 1080px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+
+  /* 배경색을 직접 쓰지 말고 변수를 연결하세요 */
+  background-color: var(--current-bg);
+  transition: background-color 0.3s; /* 색 바뀔 때 부드럽게 */
+}
+
+/* /////////////////////////////////////////////////////////// 자기소개 메인 페이지////////////////////////////////*/
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
 .intro-visual {
   position: relative;
   width: 100vw;
+  min-height: 900px;
   height: 100vh;
+  overflow-y: auto;
 }
 
 /* 3. 왼쪽 데코 선 */
 .side-deco {
   position: absolute;
-  left: 20px;
-  top: 40px;
+  left: 30px;
+  top: 120px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 .line {
-  width: 3px;
+  width: 5px;
   display: block;
 }
 .orange-top {
@@ -197,6 +178,17 @@ body {
 
 /* /////////////////////////////////자기소개 css////////////////////// */
 /* /////////////////////////////////////////////////////////////////////// */
+.portfolio-container {
+  background-color: #1a1a1a;
+  background-image: url("assets/images/bg_illus.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 800px;
+
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
 .about-me {
   width: 100%;
   min-height: 100vh;
@@ -1137,7 +1129,7 @@ body {
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
 /* 1. 배경 이미지 유령 현상 해결 및 밝은 모드 설정 */
 .portfolio-container.light-mode {
-  --current-bg: var(--bg-light); 
+  --current-bg: var(--bg-light);
   background-image: none !important; /* 다른 섹션 배경그림 강제 삭제 */
   color: #1a1a1a; /* 글자색 검정으로 변경 */
 }
@@ -1174,7 +1166,7 @@ body {
 
 .card_img_box {
   width: 100%;
-  height: 420px; 
+  height: 420px;
   border-radius: 15px;
   overflow: hidden;
   margin-bottom: 25px;
@@ -1189,15 +1181,15 @@ body {
 
 /* 4. ★ 내부 스크롤 핵심 설정 ★ */
 .scroll_box {
-  height: 750px;      /* 박스 높이를 길게 고정 */
-  overflow-y: auto;    /* 세로 스크롤 활성화 */
+  height: 750px; /* 박스 높이를 길게 고정 */
+  overflow-y: auto; /* 세로 스크롤 활성화 */
   overflow-x: hidden;
   border: 1px solid #eee;
 }
 
 .scroll_box img {
-  height: auto;       /* 이미지는 자기 원래 길이대로 나옴 */
-  object-fit: contain; 
+  height: auto; /* 이미지는 자기 원래 길이대로 나옴 */
+  object-fit: contain;
 }
 
 /* 스크롤바 커스텀 (디자인 완성도 up) */
@@ -1205,7 +1197,7 @@ body {
   width: 8px;
 }
 .scroll_box::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
 
@@ -1240,12 +1232,22 @@ body {
   font-weight: 700;
   text-align: center;
   transition: 0.3s;
-  margin-top: auto; 
-  align-self: flex-start; }
+  margin-top: auto;
+  align-self: flex-start;
+}
 
-.btn_green { background-color: #67b084; color: #fff; }
-.btn_yellow { background-color: #f7ff3c; color: #1a1a1a; }
-.btn_more:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.btn_green {
+  background-color: #67b084;
+  color: #fff;
+}
+.btn_yellow {
+  background-color: #f7ff3c;
+  color: #1a1a1a;
+}
+.btn_more:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
 
 /* 1. 공통 섹션 설정 */
 .work_list_section {
@@ -1298,14 +1300,23 @@ body {
 
 /* 호버 시 위로 슥 올라가는 애니메이션 (통일) */
 .btn_more:hover {
-  transform: translateY(-8px); 
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* 섹션별 버튼 색상 */
-.btn_green { background-color: #67b084; color: #fff; }
-.btn_yellow { background-color: #f7ff3c; color: #1a1a1a; }
-.btn_pink { background-color: #ffb7c5; color: #fff; }
+.btn_green {
+  background-color: #67b084;
+  color: #fff;
+}
+.btn_yellow {
+  background-color: #f7ff3c;
+  color: #1a1a1a;
+}
+.btn_pink {
+  background-color: #ffb7c5;
+  color: #fff;
+}
 
 /* 5. 리소스 영역 전용 스타일 (가독성 수정) */
 .resource_area {
@@ -1404,7 +1415,7 @@ body {
   display: flex;
   flex-direction: column;
   /* ★ 중앙 이미지들 사이의 세로 간격 50px */
-  gap: 50px; 
+  gap: 50px;
 }
 
 .strawberry_milk_img_detail_01 {
@@ -1625,8 +1636,8 @@ body {
   width: 100%;
   display: flex;
   justify-content: flex-end; /* ★ 왼쪽이나 중앙이 아닌 오른쪽 끝으로 배치 */
-  padding-right: 40px;      /* 오른쪽 끝에서 살짝 띄우고 싶을 때 조절 */
-  margin-bottom: 40px;      /* 아래 통이미지와의 간격 */
+  padding-right: 40px; /* 오른쪽 끝에서 살짝 띄우고 싶을 때 조절 */
+  margin-bottom: 40px; /* 아래 통이미지와의 간격 */
 }
 
 .gotham_detail_logo_01 {
@@ -1753,9 +1764,9 @@ body {
 .pruzio_slide_track_02 {
   display: flex;
   /* (사진 400px + 간격 20px) * 20장 = 8400px */
-  width: calc(420px * 20); 
+  width: calc(420px * 20);
   animation: pruzio_loop_big 40s linear infinite;
-  
+
   /* [렉 방지] GPU를 사용하도록 강제하여 애니메이션을 부드럽게 만듦 */
   will-change: transform;
 }
@@ -1783,8 +1794,12 @@ body {
 
 /* 애니메이션: 10장 지점(4200px)에서 리셋 */
 @keyframes pruzio_loop_big {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(calc(-420px * 10), 0, 0); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(calc(-420px * 10), 0, 0);
+  }
 }
 
 .pruzio_slide_footer_02 {
@@ -1806,9 +1821,9 @@ body {
 }
 
 .game_left_area {
-  flex: 0 0 45%; 
+  flex: 0 0 45%;
   height: 100vh;
-  background-image: url('assets/images/game_visual_left.png');
+  background-image: url("assets/images/game_visual_left.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -1825,27 +1840,27 @@ body {
 
 /* --- 폰트 가독성 수정 포인트 --- */
 .game_text_box h3 {
-  font-size: 34px;      /* 크기 살짝 키움 */
-  font-weight: 800;      /* 더 두껍게 */
-  color: #000000;       /* 완전 검정 */
+  font-size: 34px; /* 크기 살짝 키움 */
+  font-weight: 800; /* 더 두껍게 */
+  color: #000000; /* 완전 검정 */
   letter-spacing: -1px;
   margin-bottom: 30px;
 }
 
 .game_text_box p {
-  font-size: 19px;      /* 18px -> 19px 확대 */
-  font-weight: 500;      /* 300(두께) -> 500으로 올려서 선명하게 */
-  line-height: 1.8;      /* 줄간격 확보 */
-  color: #000000;       /* 흐린 색 버리고 완전 검정 */
+  font-size: 19px; /* 18px -> 19px 확대 */
+  font-weight: 500; /* 300(두께) -> 500으로 올려서 선명하게 */
+  line-height: 1.8; /* 줄간격 확보 */
+  color: #000000; /* 흐린 색 버리고 완전 검정 */
   margin-bottom: 50px;
-  max-width: 750px;     /* 가로 폭 살짝 넓힘 */
+  max-width: 750px; /* 가로 폭 살짝 넓힘 */
   word-break: keep-all; /* 한글 단어 안 잘리게 */
 }
 
 /* 통이미지 박스 */
 .game_contents_all {
   width: 100%;
-  max-width: 800px;     /* 통이미지 가이드라인 */
+  max-width: 800px; /* 통이미지 가이드라인 */
 }
 
 .game_contents_all img {
@@ -1901,7 +1916,7 @@ body {
 }
 
 .king_main_img {
-  flex: 0 0 60%; 
+  flex: 0 0 60%;
 }
 
 .king_main_img img {
@@ -2022,25 +2037,39 @@ body {
   box-sizing: border-box;
 }
 
-.research_text_full h3 { font-size: 32px; color: #fff; font-weight: 800; margin-bottom: 20px; }
-.research_text_full p { font-size: 18px; line-height: 1.8; color: #ccc; }
+.research_text_full h3 {
+  font-size: 32px;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+.research_text_full p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #ccc;
+}
 
 /* 슬라이드 트랙 설정 */
-.research_slide_container { width: 100%; position: relative; }
+.research_slide_container {
+  width: 100%;
+  position: relative;
+}
 
 .research_slide_track {
   display: flex;
   /* ★ 수정: 이미지 18개 분량의 총 너비 (600px + 좌우패딩 20px = 620px) */
   /* 620px * 18 = 11160px */
-  width: 11160px; 
+  width: 11160px;
   animation: scroll 40s linear infinite; /* 속도가 너무 빠르면 초(s)를 늘리세요 */
 }
 
-.research_slide_track:hover { animation-play-state: paused; }
+.research_slide_track:hover {
+  animation-play-state: paused;
+}
 
 .slide {
-  width: 600px; 
-  height: 700px; 
+  width: 600px;
+  height: 700px;
   padding: 0 10px; /* 좌우 10px씩 총 20px 여백 */
   flex-shrink: 0;
 }
@@ -2048,25 +2077,32 @@ body {
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   cursor: zoom-in;
   transition: 0.3s;
 }
 
 /* ★ 무한 애니메이션 수치 교정 */
 @keyframes scroll {
-  0% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
   /* ★ 중요: 원본 이미지 9개가 다 지나갔을 때 리셋 (620px * 9 = 5580px) */
-  100% { transform: translateX(-5580px); } 
+  100% {
+    transform: translateX(-5580px);
+  }
 }
 
 /* --- 모달 스타일 (클릭 시 맨 위로 오도록 z-index 수정) --- */
 .modal {
-  display: none; 
-  position: fixed; 
+  display: none;
+  position: fixed;
   z-index: 100000; /* ★ 슬라이드보다 무조건 위로 */
-  left: 0; top: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.95); 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
   cursor: zoom-out;
   justify-content: center; /* 중앙 정렬용 */
   align-items: center;
@@ -2074,20 +2110,29 @@ body {
 
 .modal-content {
   /* 화면의 90%가 아니라 95%까지 꽉 채우고 싶을 때 */
-  max-width: 95%; 
-  max-height: 95%; 
-  
+  max-width: 95%;
+  max-height: 95%;
+
   object-fit: contain; /* 비율은 절대 깨지지 않게 유지 */
   animation: zoom 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); /* 팝업 뜰 때 쫀득하게 */
 }
 @keyframes zoom {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-.close { 
-  position: absolute; 
-  top: 30px; right: 50px; 
-  color: #fff; font-size: 50px; 
-  font-weight: bold; cursor: pointer; 
+.close {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  color: #fff;
+  font-size: 50px;
+  font-weight: bold;
+  cursor: pointer;
 }
