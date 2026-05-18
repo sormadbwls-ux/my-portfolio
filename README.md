@@ -1,6 +1,6 @@
 # 🎨 포트폴리오 김유진- Personal Portfolio Website
 
-> 개성 있는 그래픽 리소스와 인터랙티브 화면 설계를 결합한 UI/UX · 비주얼 디자이너 '읭딩'의 공식 포트폴리오 웹사이트 프로젝트입니다.
+> 개성 있는 그래픽 리소스와 인터랙티브 화면 설계를 결합한 UI/UX · 비주얼 디자이너의 포트폴리오 웹사이트 프로젝트입니다.
 
 ---
 
@@ -10,7 +10,7 @@
 
 | 구분 | 내용 |
 |---|---|
-| **프로젝트명** | 읭딩 개인 포트폴리오 웹사이트 구축 |
+| **프로젝트명** | 개인 포트폴리오 웹사이트 구축 |
 | **디자인 컨셉** | Orange & Dark 테마를 활용한 개성 있고 트렌디한 비주얼 브랜딩 |
 | **주요 목적** | 다채로운 디자인 스택(UI/UX, 일러스트, 3D, 모션)을 직관적인 아키텍처로 증명 |
 | **핵심 역할** | 브랜드 아이덴티티 수립, 웹 인터페이스 레이아웃 설계 및 그래픽 자산 제작 |
@@ -82,6 +82,6 @@ flowchart LR
 
 | 구분 | 링크/정보 |
 |---|---|
-| **Email** | your-email@example.com |
-| **Portfolio Link** | 준비 중 (또는 배포 주소) |
-| **GitHub** | https://github.com |
+| **Email** | sormadbwls@naver.com |
+| **Portfolio Link** | (https://sormadbwls-ux.github.io/my-portfolio/)) |
+| **GitHub** | [https://github.co](https://github.com/sormadbwls-ux) |
